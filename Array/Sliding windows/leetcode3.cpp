@@ -4,20 +4,58 @@
 //Time complexity is O(n)
 //cool feeled;
 
+// class Solution {
+// public:
+//     int lengthOfLongestSubstring(string s) {
+//         unordered_map<int , int>mp;
+//         int n=s.size();
+//         int left=0;
+//         int answer=0;
+
+//         for(int right=0; right < n; right++){
+//             mp[s[right]]++;
+//             //Elements added in the map;
+
+//             while(mp[s[right]] > 1){
+//                 mp[s[left]]--;
+//                 left++;
+//                 //Elemnt out of window;
+//             }
+//             answer=max(answer, right-left+1);;
+//         }
+
+//         return answer;
+        
+//     }
+// };
+
+
+//Understoo why not to use freq array;
+//also size of window formula that is right -left+1;
+//Fixed  while loop
+//------------------------------------------------------------------------------------------
+
+
+//space complexity Big O(1)
+
+
+
 class Solution {
 public:
     int lengthOfLongestSubstring(string s) {
-        unordered_map<int , int>mp;
+        // unordered_map<int , int>mp; Try to reduce space complexity to O(1)
         int n=s.size();
         int left=0;
-        int answer=0;
+        int answer=0;//Do it with fequency array 
+        int freq[128]={0}; //ASCII Input only so we can go with size 128
 
         for(int right=0; right < n; right++){
-            mp[s[right]]++;
+            // mp[s[right]]++;
+            freq[s[right]]++;
             //Elements added in the map;
 
-            while(mp[s[right]] > 1){
-                mp[s[left]]--;
+            while(freq[s[right]] > 1){
+                freq[s[left]]--;
                 left++;
                 //Elemnt out of window;
             }
@@ -28,8 +66,3 @@ public:
         
     }
 };
-
-
-//Understoo why not to use freq array;
-//also size of window formula that is right -left+1;
-//Fixed  while loop
