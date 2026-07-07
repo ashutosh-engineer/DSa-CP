@@ -59,7 +59,7 @@ public:
                 left++;
                 //Elemnt out of window;
             }
-            answer=max(answer, right-left+1);;
+            answer=max(answer, right-left+1);
         }
 
         return answer;
