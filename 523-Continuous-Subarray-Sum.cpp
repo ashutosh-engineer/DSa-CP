@@ -5,18 +5,17 @@ public:
 
         int sum=0;
         unordered_map<int , int>mp;
-
-        if(k % 2 != 0){
-            return false;
-        }
+        mp[0]=-1;
 
         for(int i=0; i<n; i++){
             sum+=nums[i];
 
-            if(mp[sum] % k==0 && i >= 2){
-                return true;
+            int rem=sum % k;
+
+            if(mp.find(rem) != mp.end()){
+                if(i-mp[rem] >= 2) return true;
             }else{
-                mp[sum]=i;
+                mp[rem]=i;
             }
         }
         return false;
