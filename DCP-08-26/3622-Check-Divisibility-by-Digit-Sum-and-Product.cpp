@@ -19,7 +19,8 @@ public:
     }
 
     bool checkDivisibility(int n) {
-        int total = digitsum(n) + product(n);
-        return (n % total == 0);
+        // int total = digitsum(n) + product(n);
+        
+        return ((digitsum(n) + product(n)) % n == 0);
     }
 };
